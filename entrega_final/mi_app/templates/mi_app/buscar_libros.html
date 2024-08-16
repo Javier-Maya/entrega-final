@@ -1,0 +1,23 @@
+{% extends 'mi_app/base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio{% endblock title %}
+
+{% block main %}
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="{% url 'buscar_libros' %}">
+        <input type="text" name="q" placeholder="Buscar" value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Mostrar la lista de libros -->
+    <h2>Libros</h2>
+    <ul>
+        {% for libro in libros %}
+        <li>Libro: {{ libro.titulo }} <br> Editorial: {{ libro.editorial }} <br> Descripcion: {{ libro.descripcion }}</li>
+        {% empty %}
+        <li>No se encontraron libros.</li>
+        {% endfor %}
+    </ul>
+{% endblock main %}

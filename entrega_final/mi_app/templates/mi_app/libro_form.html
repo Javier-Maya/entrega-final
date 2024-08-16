@@ -1,0 +1,27 @@
+{% extends "mi_app/base.html" %}
+
+{% block title %}Crear Nuevo Libro{% endblock %}
+
+{% block main %}
+    <div class="container d-flex flex-column justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-lg border-light">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4 text-center">Crear Nuevo Libro</h1>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a class="btn btn-secondary" href="{% url 'libro_list' %}">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

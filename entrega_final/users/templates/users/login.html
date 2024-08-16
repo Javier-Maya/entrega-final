@@ -1,0 +1,24 @@
+{% extends "mi_app/base.html" %}
+
+{% load static %}
+
+{% block title %} Login {% endblock title %}
+
+{% block main %}
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Iniciar sesión</h2>
+            {% comment %} <p class="text-center mb-4">{{msg_login}}</p>  {% endcomment %}
+            <form action="{% url 'Login' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </form>
+            {% if msg_login %}
+            <div class="alert alert-danger mt-3">{{ msg_login }}</div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock main %}
